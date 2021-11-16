@@ -1,13 +1,19 @@
-# dApp-reacthooks
- Snippets & React Hooks really useful for dApp developers.
+# DApp-reacthooks
 
+Snippets & React Hooks really useful for dApp developers. Head into `react-hooks` folder to get the source code.
 
-you can get chainObject from https://chainid.network/chains.json
-search for your chain and pass it to `CHAINOBJECT`
+- useChain
+- useContract
+
+## useChain
+
+One of the most frustrating thing for user experience is maually adding chain or switching chain.
+Now you can do this directly in your DApp how chainlist.org does.
+
 ```bash
-const { chainId, switchChain } = useChain();
 const CHAINOBJECT; 
-
+const { chainId, switchChain } = useChain();
+/* change chain after user clicks */
 const handleSwitchChainClick = (event) => {
     switchChain(CHAINOBJECT)
     .then(() => {
@@ -17,7 +23,10 @@ const handleSwitchChainClick = (event) => {
         console.log(err);
     })
 }
+/* check if user is on the right chain */
 const checkIfOnChain = () => {
     return chainId === CHAINOBJECT.chainId;
 }
 ```
+you can get chainObject from https://chainid.network/chains.json
+search for your chain and pass it to `CHAINOBJECT`
