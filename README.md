@@ -11,6 +11,7 @@ One of the most frustrating thing for user experience is maually adding chain or
 Now you can do this directly in your DApp how chainlist.org does.
 
 ```bash
+import { useChain } from "react-hooks/useChain";
 
 const CHAINOBJECT; 
 const { chainId, switchChain } = useChain();
