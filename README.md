@@ -11,9 +11,17 @@ One of the most frustrating thing for user experience is maually adding chain or
 Now you can do this directly in your DApp how chainlist.org does.
 
 ```bash
+
 const CHAINOBJECT; 
 const { chainId, switchChain } = useChain();
-/* change chain after user clicks */
+
+```
+you can get chainObject from https://chainid.network/chains.json
+search for your chain and pass it to `CHAINOBJECT`
+
+#### usage
+- change chain after user clicks a button.
+```bash
 const handleSwitchChainClick = (event) => {
     switchChain(CHAINOBJECT)
     .then(() => {
@@ -23,10 +31,11 @@ const handleSwitchChainClick = (event) => {
         console.log(err);
     })
 }
-/* check if user is on the right chain */
+```
+- check if user is on the right chain
+```bash
 const checkIfOnChain = () => {
     return chainId === CHAINOBJECT.chainId;
 }
 ```
-you can get chainObject from https://chainid.network/chains.json
-search for your chain and pass it to `CHAINOBJECT`
+
