@@ -42,16 +42,30 @@ export const useChain = () => {
           : chain.infoURL,
       ],
     };
-    const promise = window.ethereum.request({
+    let promise;
+    if (
+      chain.chainId === 1 ||
+      chain.chainId === 3 ||
+      chain.chainId === 4 ||
+      chain.chainId === 5 ||
+      chain.chainId === 42
+    ) {
+      promise = window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: toHex(chain.chainId) }],
+      });
+    }
+    promise = window.ethereum.request({
       method: "wallet_addEthereumChain",
       params: [params],
     });
-    promise.then((chainCh) => {
-      setChainId(chain.chainId);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    promise
+      .then((chainCh) => {
+        setChainId(chain.chainId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     return promise;
   };
 
