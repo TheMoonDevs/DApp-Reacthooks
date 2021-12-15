@@ -22,6 +22,11 @@ export const useConnect = (provider_in) => {
   const [isConnected, setConnected] = useState(false);
   const _isMounted       = useRef(true);
   const _isConnectCalled = useRef(false);
+
+  useEffect(() => {
+    if(!provider_in)
+      setProvider(window.ethereum);
+  },[provider_in])
   
   useEffect(() => {
     _isMounted.current = true;

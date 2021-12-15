@@ -2,8 +2,32 @@
 
 Snippets & React Hooks really useful for dApp developers. Head into `react-hooks` folder to get the source code.
 
+- useConnect
 - useChain
 - useContract
+
+
+## useConnect
+
+Supports Metamask Wallet, Coinbase Wallet.
+
+
+```bash
+import { useConnect } from "react-hooks/useConnect";
+
+const { address, accounts, connectWallet, isConnected } = useConnect();
+
+const handleConnectClick = () => {
+    connectWallet()
+    .then(()=>{
+        console.log(address);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+
+```
 
 ## useChain
 
